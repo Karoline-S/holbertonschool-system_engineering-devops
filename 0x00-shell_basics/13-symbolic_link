@@ -1,0 +1,2 @@
+#!/bin/bash
+ln -s /bin/ls link_file.txt __ls__
