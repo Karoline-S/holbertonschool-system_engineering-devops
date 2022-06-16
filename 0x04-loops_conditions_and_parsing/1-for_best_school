@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# env command in the shebang is more portable than full path to the interpreter
+for ((x=0 ; x<10 ; x++)); do echo "Best School"; done
