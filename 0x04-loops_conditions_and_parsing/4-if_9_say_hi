@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# env command in the shebang is more portable than full path to the interpreter
+x="0"
+while [ $x -lt 10 ]
+do
+    echo "Best School"
+    if [ $x = 8 ]
+    then echo "Hi"
+    fi
+    x=$((x+1))
+done
