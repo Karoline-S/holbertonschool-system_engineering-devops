@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# env command in the shebang is more portable than full path to the interpreter
+x="0"
+until [ $x -gt 9 ]
+do
+    echo "Best School"
+    x=$((x+1))
+done
