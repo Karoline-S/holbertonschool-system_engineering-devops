@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# env command in the shebang is more portable than full path to the interpreter
+for num in {1..100}; do
+    out=""
+    (( num % 3 == 0 )) && out="Fizz"
+    (( num % 5 == 0 )) && out="${out}Buzz"
+    echo ${out:-$num}
+done
