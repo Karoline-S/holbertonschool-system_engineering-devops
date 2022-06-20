@@ -3,7 +3,7 @@
 
 ### Mandatory Tasks
 0. Write a bash script that displays it's own PID
-1. Write a bash script that displays a list of curretnly running processes. Requirements:
+1. Write a bash script that displays a list of currently running processes. Requirements:
   - must show all processes, for all users, including those which might not have a TTY.
   - display in a user-oriented format
   - show process heirarchy
@@ -18,7 +18,7 @@
   - **__To infinity and beyond__** indefinitely
   - With a sleep 2 in between each iteration
   - **__I am invincible!!!__** when receiving a SIGTERM signal
-8. Write a JBash scriopt that kills the process in task 7
+8. Write a Bash script that kills the process in task 7
 
 ### Advanced Tasks
 9. Write a bash script that:
