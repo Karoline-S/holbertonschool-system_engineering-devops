@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# stops another process using kill
+_term_received() {
+    echo "I am invincible!!!"
+}
+
+trap _term_received SIGTERM
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
