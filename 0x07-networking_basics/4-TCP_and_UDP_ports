@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# generates a list of listening sockets with PID and name of program
+echo "$(sudo netstat -pl)"
