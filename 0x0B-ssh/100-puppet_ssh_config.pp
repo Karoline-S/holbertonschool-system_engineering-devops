@@ -2,7 +2,7 @@
 
 exec { 'update_ssh_config':
   command => 'echo "Host 54.242.211.172
-       IdentifyFile ~/.ssh/school
-       PasswordAuthentication no" >> /etc/ssh/ssh_config',
+    IdentifyFile ~/.ssh/school
+    PasswordAuthentication no" >> /etc/ssh/ssh_config',
   path    => ['/usr/bin', '/sbin', '/bin', '/usr/sbin'],
 }
