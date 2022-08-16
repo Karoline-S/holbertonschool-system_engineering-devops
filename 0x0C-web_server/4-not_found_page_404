@@ -4,7 +4,7 @@
 # install and start nginx
 sudo apt-get -y udpate
 sudo apt-get -y install nginx
-sudo service start nginx
+sudo service nginx start
 
 # configure index.html file
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
@@ -15,6 +15,6 @@ sudo sed -i '/\[::\]:80 default_server/ a \\n\trewrite ^/redirect_me/(.*)$ https
 
 # configure custom 404 page
 sudo sh -c 'echo "Ceci n'est pas une page" > /var/www/html/404-error.html'
-sudo sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
+sudo sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
 
 sudo service nginx restart
