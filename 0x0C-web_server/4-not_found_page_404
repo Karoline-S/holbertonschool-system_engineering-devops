@@ -8,12 +8,16 @@ sudo service nginx start
 
 # configure root query page
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+if [[ -f /var/www/html/index.nginx-debian.html ]]
+then
+	sudo rm /var/www/html/index.nginx-debian.html
+fi
 
 # configure 301 redirect for /redirect_me/
-sudo sed -i '/server_name _;/a \\trewrite ^/redirect_me/(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo sed -i '/server_name _;/a \\n\trewrite ^/redirect_me/(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
 # configure custom 404 page
 sudo sh -c 'echo "Ceci n'\''est pas une page" > /var/www/html/custom_404.html'
-sudo sed -i '/rewrite/ a \\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
+sudo sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
 
 sudo service nginx restart
