@@ -7,7 +7,7 @@ sudo apt-get -y install nginx
 sudo service nginx start
 
 # configure custom 404 page
-echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sudo sh -c 'echo "Ceci nest pas une page" > /var/www/html/custom_404.html'
 sudo sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
 
 sudo service nginx restart
