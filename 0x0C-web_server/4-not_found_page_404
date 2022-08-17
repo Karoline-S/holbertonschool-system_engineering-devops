@@ -15,6 +15,6 @@ sudo sed -i '/\[::\]:80 default_server/ a \\n\trewrite ^/redirect_me/(.*)$ https
 
 # configure custom 404 page
 echo "Ceci n'est pas une page" > /var/www/html/404-error.html
-sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
+sudo sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
 
 sudo service nginx restart
