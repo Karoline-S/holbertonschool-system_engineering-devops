@@ -5,10 +5,10 @@ sudo apt-get -y install nginx
 sudo service nginx start
 
 # configure root query page
-sudo echo "Hello World!" > /var/www/html/index.html
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
 
 # configure custom header in http response
-sudo sed -i "/\[::\]:80 default_server/ a \\n\tadd_header X-Served-By $hostname;" /etc/nginx/sites-available/default
+sudo sed -i "/\[::\]:80 default_server/ a \\n\tadd_header X-Served-By $hostname always;" /etc/nginx/sites-available/default
 
 # restart server
 sudo service nginx restart
