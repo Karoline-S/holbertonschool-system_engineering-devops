@@ -6,10 +6,6 @@ sudo service nginx start
 
 # configure root query page
 sudo echo "Hello World!" > /var/www/html/index.html
-if [ -f /var/www/html/index.nginx-debian.html ]
-then
-    sudo rm /var/www/html/index.nginx-debian.html
-fi
 
 # configure custom header in http response
 sudo sed -i "/\[::\]:80 default_server/ a \\n\tadd_header X-Served-By $hostname;" /etc/nginx/sites-available/default
