@@ -5,21 +5,14 @@ sudo apt-get -y install nginx
 sudo service nginx start
 
 # configure root query page
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sudo echo "Hello World!" > /var/www/html/index.html
 if [ -f /var/www/html/index.nginx-debian.html ]
 then
     sudo rm /var/www/html/index.nginx-debian.html
 fi
 
-# configure 301 redirection /redirect_me/
-sudo sed -i '/\[::\]:80 default_server/ a \\n\trewrite ^/redirect_me/(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-
-# configure custom 404 page
-sudo sh -c 'echo "Ceci n'\''est pas une page" > /var/www/html/custom_404.html'
-sudo sed -i '/rewrite/ a \\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
-
 # configure custom header in http response
-sudo sed -i "/error_page/ a \\n\tadd_header X-Served-By $hostname always;" /etc/nginx/sites-available/default
+sudo sed -i "/\[::\]:80 default_server/ a \\n\tadd_header X-Served-By $hostname always;" /etc/nginx/sites-available/default
 
 # restart server
 sudo service nginx restart
