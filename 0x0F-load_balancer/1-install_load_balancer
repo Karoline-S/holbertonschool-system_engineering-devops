@@ -3,16 +3,15 @@
 
 # install and start HAProxy
 sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install -y --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
-sudo apt-get update
-sudo apt-get install -y haproxy=2.0.*
-sudo apt-get install -y rsyslog
+# sudo apt-get install -y --no-install-recommends software-properties-common
+# sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
+# sudo apt-get update
+sudo apt-get install -y haproxy
 
 # enable start by init script and create log files
 echo "ENABLED=1" >> /etc/default/haproxy
 
 # configure frontend load balancing
 sudo sh -c 'echo "\nfrontend http_in\n\tbind *:80\n\tmode http\n\tdefault_backend webservers\n\nbackend webservers\n\tbalance roundrobin\n\toption forwardfor\n\toption httpchk HEAD / HTTP/1.1\\\r\\\nHost:localhost\n\tserver 4280-web-01 54.234.154.44:80 check\n\tserver 4280-web-02 35.175.189.164:80 check" >> /etc/haproxy/haproxy.cfg'
-sudo service rsyslog start
+
 sudo service haproxy start
