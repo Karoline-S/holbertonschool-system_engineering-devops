@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# requires a domain and accepts optional subdomain name passed in
+# audits domain or specific subdomain and prints selected info to stdout
+# requirements: must use awk, must use at least one bash function
+audit_domain () {
+    dot='.'
+    if [ ! -z $1 ]
+    then
+	url=$1$dot$2
+	awk 'BEGIN { print "The subdomain $1 is a "; system("dig $url +noall +answer"); print " record and points to "; system("dig $url +short") }'
+    else
+	for sub in 'www.' 'lb-01.' 'web-01.' 'web-02.'
+	do
+	    url=$sub$dot$2
+	    dig $url
+	done
+    fi
+}
+
+domain_name=${1:-''}
+subdomain_name=${2:-''}
+
+if [ -z $domain_name ]
+then
+    exit 0
+else
+    audit_domain $subdomain_name $domain_name
+fi
+
+
+
