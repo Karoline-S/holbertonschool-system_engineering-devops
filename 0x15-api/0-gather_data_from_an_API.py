@@ -29,4 +29,4 @@ print('Employee {} is done with tasks({}/{}):'
 
 for item in todo_data:
     if item['completed']:
-        print('\t{}'.format(item['title']))
+        print('\t {}'.format(item['title']))
