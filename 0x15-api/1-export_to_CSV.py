@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """call a REST API and display formatted response"""
 
-import requests
 import csv
+import requests
 from sys import argv
 
 try:
