@@ -10,7 +10,7 @@ try:
             .format(argv[1])
         url_todos = 'https://jsonplaceholder.typicode.com/users/{}/todos' \
             .format(argv[1])
-except as Exception:
+except Exception:
     print('Usage: python3 0-gather_data_from_an_API.py <integer>')
     exit
 
