@@ -10,9 +10,9 @@ def create_csv(id):
     """
     fetches data from REST API and saves in csv file
     """
-    url_users = 'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])
+    url_users = 'https://jsonplaceholder.typicode.com/users/{}'.format(id)
     url_todos = 'https://jsonplaceholder.typicode.com/users/{}/todos' \
-            .format(argv[1])
+        .format(id)
 
     user_data = requests.get(url_users).json()
     todo_data = requests.get(url_todos).json()
