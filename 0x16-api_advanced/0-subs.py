@@ -15,9 +15,8 @@ def number_of_subscribers(subreddit):
                'python3/Holberton_school_project/1.0 (by /u/karoline_dev)'}
 
     response = requests.get(url, headers=headers)
-    if response:
+    try:
         body = response.json()
-        try:
-            return body['data']['subscribers']
-        except KeyError:
-            return 0
+        return body['data']['subscribers']
+    except Exception:
+        return 0
