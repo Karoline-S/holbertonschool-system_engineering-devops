@@ -35,18 +35,18 @@ def collate_and_print_results(word_list, hot_list):
     results"""
     results_dict = {}
 
-    word_list = list(dict.fromkeys(word_list))
     word_list = [word.lower() for word in word_list]
 
     for post in hot_list:
-        title_list = post['data']['title'].split()
+        split_title = post['data']['title'].split()
         for word in word_list:
-            for title_word in title_list:
+            for title_word in split_title:
                 if word == title_word.lower():
                     results_dict[word] = results_dict.get(word, 0) + 1
 
+    results_dict = dict(sorted(results_dict.items()))
     sorted_count = sorted(results_dict.items(),
                           key=lambda x: x[1],
                           reverse=True)
-    for i in sorted_count:
-        print('{}: {}'.format(i[0], i[1]))
+    for item in sorted_count:
+        print('{}: {}'.format(item[0], item[1]))
