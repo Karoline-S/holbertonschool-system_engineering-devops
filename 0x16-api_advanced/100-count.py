@@ -21,7 +21,10 @@ def count_words(subreddit, word_list, hot_list=[], after='1'):
         response = requests.get(url, headers=headers)
         body = response.json()
         hot_list = hot_list + body['data']['children']
-        return count_words(subreddit, word_list, hot_list, body['data']['after'])
+        return count_words(subreddit,
+                           word_list,
+                           hot_list,
+                           body['data']['after'])
     except Exception as e:
         print(e)
         return None
@@ -37,6 +40,8 @@ def collate_and_print_results(word_list, hot_list):
             if re.search(word, post['data']['title'], re.IGNORECASE):
                 results_dict[word] = results_dict.get(word, 0) + 1
 
-    sorted_count = sorted(results_dict.items(), key=lambda x:x[1], reverse=True)
+    sorted_count = sorted(results_dict.items(),
+                          key=lambda x: x[1],
+                          reverse=True)
     for i in sorted_count:
         print('{}: {}'.format(i[0], i[1]))
