@@ -39,11 +39,11 @@ def collate_and_print_results(word_list, hot_list):
     word_list = [word.lower() for word in word_list]
 
     for post in hot_list:
+        title_list = post['data']['title'].split()
         for word in word_list:
-            if re.search(r'\b' + word + r'\b',
-                         post['data']['title'],
-                         re.IGNORECASE):
-                results_dict[word] = results_dict.get(word, 0) + 1
+            for title_word in title_list:
+                if word == title_word.lower():
+                    results_dict[word] = results_dict.get(word, 0) + 1
 
     sorted_count = sorted(results_dict.items(),
                           key=lambda x: x[1],
